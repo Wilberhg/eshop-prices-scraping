@@ -47,8 +47,7 @@ with httpx.Client(
             game_infos = {"name": game_name, "price": game_price, "score": game_score_value}
             if monetary_value <= desired_price:
                 game_page_link = game.attrs["href"]
-                game_page_response = client.get("/games/2178-rune-factory-4-special", params={"currency": "BRL"})
-                # game_page_response = client.get(game_page_link, params={"currency": "BRL"})
+                game_page_response = client.get(game_page_link, params={"currency": "BRL"})
                 soup_game_page = BeautifulSoup(game_page_response.content, 'html.parser')
                 country_table_rows = soup_game_page.find_all("tr", class_="pointer")
                 for country_row in country_table_rows:
